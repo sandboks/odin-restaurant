@@ -2,6 +2,8 @@
     --colorBold: #3e2800;
     --colorLight: #ad8c47;
     --mainContentMaxWidth: 900px;
+    --contentGridSquareWidth: 150px;
+    --padding-amount: 1em;
 }
 
 body {
@@ -49,6 +51,10 @@ body {
     width: 100%;
     max-width: var(--mainContentMaxWidth);
     padding: 1em 0;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .main img {
@@ -92,4 +98,16 @@ body {
 .header span {
     color: var(--colorLight);
     font-size: small;
+}
+
+.mainContentGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--contentGridSquareWidth), 1fr));
+    gap: var(--padding-amount);
+}
+
+.mainContentGridSquare {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
