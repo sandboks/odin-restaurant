@@ -1,9 +1,15 @@
 :root {
     --colorBold: #3e2800;
     --colorLight: #ad8c47;
+    --colorBG2: #f8f6f1;
     --mainContentMaxWidth: 900px;
     --contentGridSquareWidth: 150px;
     --padding-amount: 1em;
+}
+
+@font-face {
+    font-family:'ZenMaruLight';
+    src: url('font/Zen_Maru_Gothic/ZenMaruGothic-Regular.ttf');
 }
 
 body {
@@ -59,6 +65,30 @@ body {
 
 .main img {
     width: 100%;
+}
+
+.slogan {
+    background-color: var(--colorBG2);
+}
+
+.slogan .headerHeading h2 {
+    background-color: var(--colorBG2);
+}
+
+.sloganBannerGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.sloganBannerText {
+    background-color: white;
+    aspect-ratio: 4 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'ZenMaruLight';
+    font-size: 24px;
 }
 
 .specialty {
