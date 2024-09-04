@@ -3,6 +3,8 @@
     --colorLight: #ad8c47;
     --colorBG2: #f8f6f1;
     --colorLight2: #d7d2c7;
+    --colorHighlighted: #7a5200;
+
     --mainContentMaxWidth: 900px;
     --contentGridSquareWidth: 150px;
     --padding-amount: 1em;
@@ -20,6 +22,8 @@ body {
 
     color: var(--colorBold);
     font-family: "メイリオ",Meiryo,"ヒラギノ角ゴ Pro W3",Hiragino Kaku Gothic Pro,Osaka,"ＭＳ Ｐゴシック",MS PGothic,Sans-Serif,verdana;
+
+    margin: 0;
 }
 
 .topBanner {
@@ -29,20 +33,24 @@ body {
     gap: 0;
     justify-content: center;
     align-items: center;
-    height: 4em;
+    height: 4.5em;
     width: 100%;
     max-width: var(--mainContentMaxWidth);
+
+    /*
+    background-color: var(--colorLight2);
+    */
+    border-bottom: 0.25em solid var(--colorHighlighted);
 }
 
-.navButtons {
-    display: grid;
-    grid-auto-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
+.topBanner a {
     height: 100%;
+    flex: 1 1 0px; /* flex basis of 0 for equal width buttons */
 }
 
 .topLogo {
-    padding: 0 1em;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
 }
 
 .topLogo, .topLogo img {
@@ -50,8 +58,27 @@ body {
 }
 
 .topBanner button {
-    height: 100%;    
-    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    font-size: large;
+    cursor: pointer;
+
+    /*
+    background: white;
+    */
+    background: none;
+    border: 0;
+    padding: 0.75em;
+}
+
+.topBanner button:hover {
+    background: var(--colorHighlighted);
+    color: white;
+}
+
+.subMenu {
+    font-size: x-small;
+    color: var(--colorLight)
 }
 
 .main {
@@ -62,6 +89,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+
+.mainStage {
+    padding: 0;
 }
 
 .main img {
