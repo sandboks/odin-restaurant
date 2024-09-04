@@ -2,6 +2,7 @@
     --colorBold: #3e2800;
     --colorLight: #ad8c47;
     --colorBG2: #f8f6f1;
+    --colorLight2: #d7d2c7;
     --mainContentMaxWidth: 900px;
     --contentGridSquareWidth: 150px;
     --padding-amount: 1em;
@@ -140,4 +141,26 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+/*
+FOOTER
+*/
+
+footer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    padding: 1em;
+}
+
+footer p, footer span {
+    color: var(--colorLight2);
+    text-align: center;
+    font-size: small;
+}
+
+a {
+    color: inherit;
 }
