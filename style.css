@@ -7,6 +7,7 @@
 
     --mainContentMaxWidth: 900px;
     --contentGridSquareWidth: 150px;
+    --menuGridSquareWidth: 220px;
     --padding-amount: 1em;
 }
 
@@ -124,6 +125,10 @@ body {
     font-size: 24px;
 }
 
+/*
+SPECIALTY
+*/
+
 .specialty {
 }
 
@@ -173,6 +178,57 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.mainContentGridSquare:hover {
+    background-color: var(--colorHighlighted);
+    color: white;
+    /*
+    */
+}
+
+
+/*
+MENU PAGE
+*/
+
+.menuContent .mainContentGrid  {
+    grid-template-columns: repeat(auto-fit, minmax(var(--menuGridSquareWidth), 1fr));
+    gap: var(--padding-amount);
+}
+
+.mainContentGridSquare p {
+    margin-bottom: 0.25em;
+}
+
+.mainContentGridSquare span {
+    color: var(--colorLight);
+    font-size: x-small;
+    padding-bottom: 1em;
+}
+
+.imageParent {
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex; /* this prevents a bit of whitespace padding at the bottom */
+    position: relative;
+}
+
+.imageParentBorder {
+    border: 0px solid var(--colorHighlighted);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.mainContentGridSquare:hover .imageParentBorder {
+    border-width: 6px;
+}
+
+.mainContentGridSquare:hover img {
+    scale: 1.1;
 }
 
 /*
