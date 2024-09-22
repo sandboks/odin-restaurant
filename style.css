@@ -9,6 +9,8 @@
     --contentGridSquareWidth: 150px;
     --menuGridSquareWidth: 220px;
     --padding-amount: 1em;
+
+    --transitionDuration: 200ms;
 }
 
 @font-face {
@@ -178,13 +180,21 @@ SPECIALTY
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    transition: var(--transitionDuration);
 }
 
 .mainContentGridSquare:hover {
+    /*
     background-color: var(--colorHighlighted);
     color: white;
-    /*
     */
+}
+
+.mainContentGridSquare:hover {
+    /* outline: 1px solid silver; */
+    box-shadow: 2px 3px 4px 0 rgba(0, 0, 0, 0.3);
+    /* scale: 1.05; */
 }
 
 
@@ -224,7 +234,13 @@ MENU PAGE
 }
 
 .mainContentGridSquare:hover .imageParentBorder {
+    /*
     border-width: 6px;
+    */
+}
+
+.mainContentGridSquare img {
+    transition: var(--transitionDuration);
 }
 
 .mainContentGridSquare:hover img {
