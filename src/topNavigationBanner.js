@@ -5,7 +5,7 @@ const bannerRecipe = [
     ['こだわり', 'ABOUT', 'test3'],
 ];
 
-import headerLogo from "./img/headerLogo.png"; //"./odin.png";
+import headerLogo from "./img/headerLogo.png";
    
 
 
