@@ -1,6 +1,7 @@
-import "./styles.css";
+import "./style.css";
 import { greeting } from "./greeting.js";
 import homePage from "./homePage.js";
+import topNavigationBanner from './topNavigationBanner.js';
 
 console.log(greeting);
-homePage();
+topNavigationBanner();
