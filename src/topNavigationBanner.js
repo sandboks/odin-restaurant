@@ -10,6 +10,8 @@ import headerLogo from "./img/headerLogo.png";
 
 
 export default () => {
+    console.log("HELLO");
+    
     const content = document.querySelector(".topBanner");
     
     CreateLogoButton(content);
