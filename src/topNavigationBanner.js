@@ -10,7 +10,6 @@ import headerLogo from "./img/headerLogo.png";
 
 
 export default () => {
-    console.log("HELLO");
     
     const content = document.querySelector(".topBanner");
     
@@ -22,6 +21,8 @@ export default () => {
 };
 
 function CreateLogoButton(parentNode) {
+    console.log("createlogobutton");
+    
     const a = document.createElement('a');
     parentNode.appendChild(a);
     
