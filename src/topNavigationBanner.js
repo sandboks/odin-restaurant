@@ -1,6 +1,7 @@
 import HomePage from "./homePage.js";
 import MenuPage from "./menuPage.js";
 import ShopPage from "./shopPage.js";
+import BrandPage from "./brandPage.js";
 
 const bannerRecipe = [
     ['ホーム', 'HOME', ],
@@ -73,6 +74,9 @@ function CreateOneButton(parentNode, textJapanese, textEnglish) {
                 break;
             case "SHOP":
                 ShopPage();
+                break;
+            case "ABOUT":
+                BrandPage();
                 break;
         }
     });
