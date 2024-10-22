@@ -29,6 +29,10 @@ body {
     margin: 0;
 }
 
+.content {
+    width: 100%;
+}
+
 .topBanner {
     /* display: grid; */
     /* grid-template-columns: repeat(4, 1fr); */    

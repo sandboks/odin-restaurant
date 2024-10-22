@@ -1,8 +1,12 @@
+import HomePage from "./homePage.js";
+import MenuPage from "./menuPage.js";
+import ShopPage from "./shopPage.js";
+
 const bannerRecipe = [
-    ['ホーム', 'HOME', ''],
-    ['メニュー', 'MENU', 'test3'],
-    ['サービス', 'SHOP', 'test3'],
-    ['こだわり', 'ABOUT', 'test3'],
+    ['ホーム', 'HOME', ],
+    ['メニュー', 'MENU',],
+    ['サービス', 'SHOP', ],
+    ['こだわり', 'ABOUT', ],
 ];
 
 import headerLogo from "./img/headerLogo.png";
@@ -16,7 +20,8 @@ export default () => {
     CreateLogoButton(content);
 
     for (let i = 0; i < bannerRecipe.length; i++) {
-        CreateOneButton(content, bannerRecipe[i][0], bannerRecipe[i][1], bannerRecipe[i][2]);
+        let button = CreateOneButton(content, bannerRecipe[i][0], bannerRecipe[i][1]);
+        
     }
 };
 
@@ -35,10 +40,10 @@ function CreateLogoButton(parentNode) {
     img.src = headerLogo;
 }
 
-function CreateOneButton(parentNode, textJapanese, textEnglish, url) {
+function CreateOneButton(parentNode, textJapanese, textEnglish) {
     //const a = parentNode.createElement('a');
     const a = document.createElement('a');
-    a.href = url;
+    //a.href = url;
 
     const button = document.createElement('button');
     a.appendChild(button);
@@ -55,6 +60,30 @@ function CreateOneButton(parentNode, textJapanese, textEnglish, url) {
     span2.classList.add('subMenu');
     button.appendChild(span2);
 
-    parentNode.appendChild(a);
+    // ADD EVENT LISTENER
+    button.addEventListener("click", () => {
+        DestroyInnerContent();
 
+        switch(textEnglish) {
+            case "HOME":
+                HomePage();
+                break;
+            case "MENU":
+                MenuPage();
+                break;
+            case "SHOP":
+                ShopPage();
+                break;
+        }
+    });
+
+    parentNode.appendChild(a);
+    return button;
+}
+
+function DestroyInnerContent() {
+    const myNode = document.querySelector(".content");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.lastChild);
+    }
 }
