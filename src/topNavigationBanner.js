@@ -14,6 +14,7 @@ let index = 0; //used to track current page
 let navigationLock = false; 
 
 import headerLogo from "./img/headerLogo.png";
+import { AppendDivWithClasses } from "./helperFunctions.js";
    
 
 
@@ -22,10 +23,10 @@ export default () => {
     const content = document.querySelector(".topBanner");
     
     CreateLogoButton(content);
+    //const buttons = AppendDivWithClasses(content, []);
 
     for (let i = 0; i < bannerRecipe.length; i++) {
         let button = CreateOneButton(content, bannerRecipe[i][0], bannerRecipe[i][1]);
-        
     }
 };
 
@@ -33,15 +34,29 @@ function CreateLogoButton(parentNode) {
     console.log("createlogobutton");
     
     const a = document.createElement('a');
+    a.classList.add("logoButton");
     parentNode.appendChild(a);
     
     const button = document.createElement('button');
     button.classList.add("topLogo");
     a.appendChild(button);
 
+    const div = AppendDivWithClasses(button, ["imgContainer"]);
+
     const img = document.createElement('img');
-    button.appendChild(img);
+    div.appendChild(img);
     img.src = headerLogo;
+
+    // ADD EVENT LISTENER
+    let textEnglish = "HOME";
+    button.addEventListener("click", () => {
+        // check to see if we're already on this page, in which case, do nothing
+        if (textEnglish == bannerRecipe[index][1] || navigationLock) {
+            return;
+        }
+
+        PerformButton(textEnglish);
+    });
 }
 
 function CreateOneButton(parentNode, textJapanese, textEnglish) {
@@ -53,9 +68,6 @@ function CreateOneButton(parentNode, textJapanese, textEnglish) {
     const span1 = document.createElement('span');
     span1.textContent = textJapanese;
     button.appendChild(span1);
-
-    const br = document.createElement('br');
-    button.appendChild(br);
 
     const span2 = document.createElement('span');
     span2.textContent = textEnglish;
@@ -110,13 +122,11 @@ function SetNavigationLock(b = true) {
 }
 
 async function FadeToWhite(reversed = false) {
-    console.log("hello");
     const faderNode = document.querySelector(".whiteFader");
     
     (!reversed) ? faderNode.classList.add("whiteFaderActive") : faderNode.classList.remove("whiteFaderActive");
 
     await Sleep(250);
-    console.log("hello2");
 
 }
 
@@ -125,6 +135,7 @@ function DestroyInnerContent() {
     const content = document.querySelector(".contentContainer");
     content.scrollTop = 0;
     
+    // destroy all created content
     const myNode = document.querySelector(".content");
     while (myNode.firstChild) {
         myNode.removeChild(myNode.lastChild);
