@@ -10,6 +10,9 @@ const bannerRecipe = [
     ['こだわり', 'ABOUT', ],
 ];
 
+let index = 0; //used to track current page
+let navigationLock = false; 
+
 import headerLogo from "./img/headerLogo.png";
    
 
@@ -42,9 +45,7 @@ function CreateLogoButton(parentNode) {
 }
 
 function CreateOneButton(parentNode, textJapanese, textEnglish) {
-    //const a = parentNode.createElement('a');
     const a = document.createElement('a');
-    //a.href = url;
 
     const button = document.createElement('button');
     a.appendChild(button);
@@ -63,31 +64,74 @@ function CreateOneButton(parentNode, textJapanese, textEnglish) {
 
     // ADD EVENT LISTENER
     button.addEventListener("click", () => {
-        DestroyInnerContent();
-
-        switch(textEnglish) {
-            case "HOME":
-                HomePage();
-                break;
-            case "MENU":
-                MenuPage();
-                break;
-            case "SHOP":
-                ShopPage();
-                break;
-            case "ABOUT":
-                BrandPage();
-                break;
+        // check to see if we're already on this page, in which case, do nothing
+        if (textEnglish == bannerRecipe[index][1] || navigationLock) {
+            return;
         }
+
+        PerformButton(textEnglish);
     });
+
 
     parentNode.appendChild(a);
     return button;
 }
 
+async function PerformButton(textEnglish) {
+    SetNavigationLock();
+    await FadeToWhite();
+    DestroyInnerContent();
+
+    switch(textEnglish) {
+        case "HOME":
+            HomePage();
+            index = 0;
+            break;
+        case "MENU":
+            MenuPage();
+            index = 1;
+            break;
+        case "SHOP":
+            ShopPage();
+            index = 2;
+            break;
+        case "ABOUT":
+            BrandPage();
+            index = 3;
+            break;
+    }
+
+    await FadeToWhite(true);
+    SetNavigationLock(false);
+}
+
+function SetNavigationLock(b = true) {
+    navigationLock = b;
+}
+
+async function FadeToWhite(reversed = false) {
+    console.log("hello");
+    const faderNode = document.querySelector(".whiteFader");
+    
+    (!reversed) ? faderNode.classList.add("whiteFaderActive") : faderNode.classList.remove("whiteFaderActive");
+
+    await Sleep(250);
+    console.log("hello2");
+
+}
+
 function DestroyInnerContent() {
+    // reset scrolling
+    const content = document.querySelector(".contentContainer");
+    content.scrollTop = 0;
+    
     const myNode = document.querySelector(".content");
     while (myNode.firstChild) {
         myNode.removeChild(myNode.lastChild);
     }
+}
+
+// https://www.sitepoint.com/delay-sleep-pause-wait/
+function Sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

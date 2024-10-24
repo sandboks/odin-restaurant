@@ -34,7 +34,7 @@ function CreateFoodMenu(parentNode) {
         ['モーニング・セット', 'MORNING SET', i06],
         ['ホットサンド', 'HOT SANDWICH', i07],
         ['トースト', 'TOAST', i08],
-        ['デザート', 'DESERT', i09],
+        ['デザート', 'DESSERT', i09],
     ];
     
     const FoodMenu = AppendDivWithClasses(parentNode, ["main", "menuContent"]);
@@ -51,7 +51,7 @@ function CreateMenuSection(parentNode) {
         ['季節のおすすめ', 'SEASONAL MENU', i00],
         ['店舗限定メニュー', 'EXCLUSIVE MENU', i10],
         ['ドトール ドッグ カフェ', 'DOUTOR DOG FRIENDLY CAFE', i11],
-        ['ドトール キッチン', 'ドトール キッチン', i12],
+        ['ドトール キッチン', 'DOUTOR KITCHEN', i12],
         ['ドトール コーヒースタンド', 'DOUTOR COFFEE STAND', i13],
         ['ドトール パークカフェ', 'DOUTOR PARK CAFE', i14],
     ];
